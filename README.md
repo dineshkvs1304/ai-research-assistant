@@ -177,76 +177,70 @@ ai-research-assistant
 
 ---
 
-# Installation
+# Run Locally
 
-### 1 Clone the repository
+## 1. Clone Repository
 
-```
-git clone https://github.com/yourusername/ai-research-assistant.git
+```bash
+git clone https://github.com/YOUR_GITHUB_USERNAME/ai-research-assistant.git
 ```
 
-```
+```bash
 cd ai-research-assistant
 ```
 
 ---
 
-### 2 Create a virtual environment
+## 2. Create Virtual Environment
 
-```
+```bash
 python -m venv venv
 ```
 
-Activate the environment.
+---
 
-Windows
+## 3. Activate Virtual Environment
 
-```
+### Windows
+
+```bash
 venv\Scripts\activate
 ```
 
-Mac / Linux
+### Mac / Linux
 
-```
+```bash
 source venv/bin/activate
 ```
 
 ---
 
-### 3 Install dependencies
+## 4. Install Dependencies
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
----
+If `requirements.txt` is not present:
 
-# Running the Project Locally
-
-The project consists of two components:
-
-- Backend API (FastAPI)
-- Frontend Interface (Streamlit)
-
-Both services must be running.
-
----
-
-## Step 1 Start Backend Server
-
-Run the FastAPI backend.
-
+```bash
+pip install fastapi uvicorn streamlit langchain langchain-community sentence-transformers faiss-cpu transformers pypdf python-multipart
 ```
+---
+
+## 6. Start Backend
+
+```bash
 uvicorn api.rag_api:app --reload
 ```
 
-Backend will start at:
+Backend URL
 
 ```
 http://127.0.0.1:8000
 ```
 
-API documentation is available at:
+API Docs
 
 ```
 http://127.0.0.1:8000/docs
@@ -254,44 +248,48 @@ http://127.0.0.1:8000/docs
 
 ---
 
-## Step 2 Start Frontend
+## 7. Start Frontend
 
-Open another terminal and run:
+Open new terminal.
 
+Activate environment.
+
+```bash
+venv\Scripts\activate
 ```
+
+Run Streamlit.
+
+```bash
 streamlit run ui/app.py
 ```
 
-The Streamlit interface will start at:
+Frontend URL
 
 ```
 http://localhost:8501
 ```
 
-Open the URL in your browser.
+---
+
+## 8. Upload Research Paper
+
+Upload PDF using Streamlit UI.
 
 ---
 
-# Using the Assistant
+## 9. Ask Questions
 
-1 Upload a research paper  
-2 Wait for the system to index the document  
-3 Ask questions related to the paper  
-4 The assistant retrieves relevant context and generates an answer  
+Enter question in input field.
 
-The response is grounded in retrieved document passages, improving factual accuracy.
+Example queries
 
----
-
-# Example Queries
-
-Example questions you can ask:
-
-- What dataset was used in this paper?
-- What methodology does the author propose?
-- What are the key contributions of the paper?
-- What evaluation metrics were used?
-- What are the limitations of the proposed method?
+```
+What dataset was used in this paper?
+What methodology does the paper propose?
+What are the key contributions?
+What evaluation metrics were used?
+```
 
 ---
 
